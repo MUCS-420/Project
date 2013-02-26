@@ -6,11 +6,11 @@ import java.io.InputStreamReader;
 
 /*
  * Created on January 23, 2006
- */
-
-/**
- * @author 
- * The TextView class prints puzzles and answers in the console 
+ *
+ **/
+/*
+ * @author Martin Z., David A., Travis R., Logan P.   
+ * 
  */
 
 public class ConsoleUI 

@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 
 /**
- * @author 
+ * @author Martin Z., David A., Travis R., Logan P.   
   * 
  */
 public class ConsoleController 

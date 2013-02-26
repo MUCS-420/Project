@@ -1,11 +1,10 @@
-package graphicView;
-import Model.ClassBox;  
+package graphicView;  
 import java.io.*;
+import java.util.Vector;
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-//import model.FileHandler;
 
 
 /**
@@ -21,12 +20,13 @@ public class GraphicUI extends JPanel
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private GraphicController controller;
+	private LayoutPanel layoutPanel; 
 	//private JTextField inputField;
-	private JTextArea theOutputMessage;
-	private static int LetterSize = 20;
-	private static int borderSize = 15;
-	private static int MaxDrawingWidth = 10000;
-	private static int MinDrawingWidth = 300;
+	//private JTextArea theOutputMessage;
+	//private static int LetterSize = 20;
+	//private static int borderSize = 15;
+	//private static int MaxDrawingWidth = 10000;
+	//private static int MinDrawingWidth = 300;
 	
 	private static final String newClassBoxItem = "Class Box";
 	
@@ -40,41 +40,10 @@ public class GraphicUI extends JPanel
 	{
 		frame = aFrame;
 		controller = aController;
-	   	
-		JLayeredPane mainPane = new JLayeredPane();
+		layoutPanel = new LayoutPanel(frame); 
+		createMenu(frame);
+	}
 
-		frame.getContentPane().add(mainPane);
-		
-		JPanel layoutPanel = setupLayoutPanel(); 
-		JPanel toolbarPanel = setupToolbarPanel(); 
-		mainPane.add(layoutPanel);
-		mainPane.add(toolbarPanel);
-
-		
-	   	createMenu(frame);
-	   	layoutPanel.addMouseListener(this);
-	   	layoutPanel.addMouseMotionListener(this);
-	}
-	
-	
-	private JPanel setupToolbarPanel()
-	{
-		JPanel toolbarPanel = new JPanel(); 
-		
-		return toolbarPanel; 
-	}
-	
-	
-	private JPanel setupLayoutPanel()
-	{
-		JPanel layoutFrame = new JPanel();
-		layoutFrame.setLocation(256, 26);
-		layoutFrame.setBounds(500,500,500,500);
-		layoutFrame.setBackground(Color.GREEN);
-		
-		return layoutFrame;
-	}
-	
 	
 	/**
 	 * Draws the painted portions when requested.
@@ -114,59 +83,6 @@ public class GraphicUI extends JPanel
 		newMenu.add(newClassBox);
 	}
 	
-	/**
-	 * Creates the text items including places to enter text and labels.
-	 * Labels cannot be changed by the user.
-	 * Text can be changed by the user unless it's not editable.
-	 * @param widgetPanel is the JPanel that will hold the text items.
-	 */
-	private void createTextItems(JPanel widgetPanel) {
-		//widgetPanel.add(Box.createRigidArea(new Dimension(100,150)));
-		
-//		JPanel panel = new JPanel();
-//		panel.setAlignmentX(CENTER_ALIGNMENT);
-//		panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
-//		widgetPanel.add(panel);
-		
-//		JLabel inputLabel = new JLabel();
-//		panel.add(inputLabel);
-//		inputLabel.setText("Enter a word to find:");
-//		inputLabel.setAlignmentX(RIGHT_ALIGNMENT);
-		
-		/*
-		inputField = new JTextField();
-		panel.add(inputField);
-		inputField.setText("");
-		inputField.setEditable(true);
-		inputField.setMaximumSize(new Dimension(MaxDrawingWidth,30));
-		inputField.addActionListener(this);
-		*/
-		
-		//widgetPanel.add(Box.createRigidArea(new Dimension(100,50)));
-
-	
-//		theOutputMessage = new JTextArea();
-//		JScrollPane scrollPane = new JScrollPane(theOutputMessage);
-//		widgetPanel.add(scrollPane);
-//		theOutputMessage.setEditable(false);
-//		theOutputMessage.setText("Open a Puzzle to Start");
-//		scrollPane.setMinimumSize(new Dimension(MinDrawingWidth,30));
-//		scrollPane.setPreferredSize(new Dimension(MinDrawingWidth,100));
-	}
-	
-	/**
-	 * Creates the button to look up a word.
-	 * @param widgetPanel is the JPanel that will hold the button.
-	 */
-	private void createButton(JPanel widgetPanel) 
-	{
-		/*
-		JButton findButton = new JButton(findButtonText);
-		findButton.addActionListener(this);
-		widgetPanel.add(findButton);
-		findButton.setAlignmentX(CENTER_ALIGNMENT);
-		*/
-	}
 	
 	/**
 	 * Prints the message in the output field.
@@ -237,7 +153,12 @@ public class GraphicUI extends JPanel
 	 */
 	public void actionPerformed(ActionEvent se) 
 	{
-		
+		String command = se.getActionCommand();
+		if(command == newClassBoxItem)
+		{	
+			layoutPanel.createClassBox();  
+			
+		}
 		/*if (se.getSource() == inputField) {
 			findWord();
 		} else {
