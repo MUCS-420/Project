@@ -1,17 +1,14 @@
 package graphicView;
 
 import java.awt.Dimension;
-import java.io.IOException;
-
 import javax.swing.*;
 
-//import model.FileHandler;
 
 /**
  * GraphicController is the startup class and controller for 
- * the java swing version of word search.
- * It owns the graphical user interface and puzzle.
- * @author David Hutchens
+ * the java swing version of our UML Editor.
+ * It owns the graphical user interface.
+ * @author Martin Z., David A., Travis R., Logan P. 
  */
 public class GraphicController 
 {
@@ -24,7 +21,8 @@ public class GraphicController
 	 * Constructs the object, creating the model and view (with the
 	 * frame and user interface)
 	 */
-    private GraphicController() {
+    private GraphicController() 
+    {
    	    //Set the look and feel (for Macs too).
 		if (System.getProperty("mrj.version") != null) {
 			System.setProperty("apple.laf.useScreenMenuBar","true");
@@ -33,9 +31,11 @@ public class GraphicController
 
         theFrame = new JFrame("A J-Panel");
         theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ui = new GraphicUI(this, theFrame);
         
         theFrame.setPreferredSize(frameSize);
+
+        ui = new GraphicUI(this, theFrame);
+        
         theFrame.pack();
         theFrame.setVisible(true);
     }

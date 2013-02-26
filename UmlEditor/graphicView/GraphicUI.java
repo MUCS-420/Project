@@ -1,40 +1,30 @@
 package graphicView;  
-import java.io.*;
-import java.util.Vector;
-import java.awt.*;
-import java.awt.event.*;
 
+import java.awt.event.*;
 import javax.swing.*;
 
 
 /**
  * GraphicUI is the swing implementation of the user interface.
- * It manages the menu, puzzle picture, text fields, and button.
+ * It manages the menu and ClassBoxes
  * It listens for various events.
- * @author David Hutchens - modified from Beth Katz's SWT code  
+ * @author @author Martin Z., David A., Travis R., Logan P.  
  */
 
-public class GraphicUI extends JPanel
-		implements MouseListener, ActionListener, MouseMotionListener {
+public class GraphicUI extends JPanel implements MouseListener, ActionListener, MouseMotionListener 
+{
 	
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
-	private GraphicController controller;
+	private GraphicController controller; 
 	private LayoutPanel layoutPanel; 
-	//private JTextField inputField;
-	//private JTextArea theOutputMessage;
-	//private static int LetterSize = 20;
-	//private static int borderSize = 15;
-	//private static int MaxDrawingWidth = 10000;
-	//private static int MinDrawingWidth = 300;
 	
 	private static final String newClassBoxItem = "Class Box";
 	
 	
-	/**
-	 * Constructor for GraphicUI uses the single Display object
-	 * which has a single Shell (window) inside (it could have more),
-	 * and puts some things inside the shell
+	/*Constructor
+	 * 
+	 * 
 	 */
 	public GraphicUI(GraphicController aController, JFrame aFrame) 
 	{
@@ -44,22 +34,7 @@ public class GraphicUI extends JPanel
 		createMenu(frame);
 	}
 
-	
-	/**
-	 * Draws the painted portions when requested.
-	 * @param Graphics gc the graphics context in which to draw 
-	 */
-	public void paintComponent(Graphics gc) 
-	{ 
-		
-		if (isOpaque()) //paints background
-		{ 
-            gc.setColor(getBackground());
-            gc.fillRect(0, 0, getWidth(), getHeight());
-		}
-	} 
-	
-	
+
 	/**
 	 * Creates all parts of the menu for the application.
 	 * @param frame the enclosing frame for the interface
@@ -90,7 +65,7 @@ public class GraphicUI extends JPanel
 	 */
 	public void printMessage(String theMessage) 
 	{
-		//theOutputMessage.setText(theMessage);
+		
 		System.out.print(theMessage + " \n");
 	}
 	
@@ -118,6 +93,7 @@ public class GraphicUI extends JPanel
 		 printMessage("Mouse exited");
 	 }
 
+	 
 	/**
 	 * Handles the mouse click event by printing the number of clicks.
 	 * @param me the mouse event containing location and modifier keys
@@ -126,6 +102,7 @@ public class GraphicUI extends JPanel
 	{
 		printMessage("Mouse clicked (# of clicks: " + me.getClickCount() + ")");	
 	}
+	
 	
 	/**
 	 * Handles the mouse down event by printing a message..
@@ -136,6 +113,7 @@ public class GraphicUI extends JPanel
 		printMessage("MouseDown")	;
 	}
 	
+	
 	/**
 	 * Handles the mouse up event by printing a message.
      * @param me the mouse event containing location and modifier keys
@@ -144,6 +122,7 @@ public class GraphicUI extends JPanel
 	{
 		printMessage("MouseUp");	
 	}
+	
 	
 	/**
 	 * Perform actions depending which widget was selected.
@@ -159,43 +138,7 @@ public class GraphicUI extends JPanel
 			layoutPanel.createClassBox();  
 			
 		}
-		/*if (se.getSource() == inputField) {
-			findWord();
-		} else {
-			String command = se.getActionCommand();
-			if (command == findButtonText) {
-				findWord();
-			} else if (command == saveMenuText) {
-				printMessage("That was a save puzzle request");
-			} else {
-				printMessage("Unknown action: " + command);
-			}
-		}
-		*/
 	}
-	
-	/**
-	 * Opens a file dialog using the provided message and 
-	 * obtains the full name of a file.
-	 * @param message the prompt in the file dialog box
-	 * @return full path name of the file name
-	 */
-	public String obtainFileName(String message) {
-		String theFileName = null;
-		final JFileChooser fc = new JFileChooser();
-		int returnVal = fc.showOpenDialog(this);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
-	           File file = fc.getSelectedFile();
-	           try {
-	        	   theFileName = file.getCanonicalPath();
-	           } catch (Exception e) {
-	        	   printMessage("Unable to determine file path.");
-	        	   theFileName = null;
-	           }
-		}
-  		return (theFileName);
-	}
-
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
