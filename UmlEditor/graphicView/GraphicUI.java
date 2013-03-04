@@ -8,7 +8,7 @@ import javax.swing.*;
  * GraphicUI is the swing implementation of the user interface.
  * It manages the menu and ClassBoxes
  * It listens for various events.
- * @author @author Martin Z., David A., Travis R., Logan P.  
+ * @author Martin Z., David A., Travis R., Logan P.  
  */
 
 public class GraphicUI extends JPanel implements MouseListener, ActionListener, MouseMotionListener 
@@ -16,7 +16,7 @@ public class GraphicUI extends JPanel implements MouseListener, ActionListener, 
 	
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
-	private GraphicController controller; 
+	private GraphicController controller; //Have not yet implemented this yet but we will in future iterations
 	private LayoutPanel layoutPanel; 
 	
 	private static final String newClassBoxItem = "Class Box";
@@ -35,11 +35,9 @@ public class GraphicUI extends JPanel implements MouseListener, ActionListener, 
 	}
 
 
-	/**
-	 * Creates all parts of the menu for the application.
-	 * @param frame the enclosing frame for the interface
-	 */
-	private void createMenu(JFrame frame) {
+	// This Creates all parts of the menu for the application.
+	private void createMenu(JFrame frame) 
+	{
 		// create a menu bar
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -59,77 +57,59 @@ public class GraphicUI extends JPanel implements MouseListener, ActionListener, 
 	}
 	
 	
-	/**
-	 * Prints the message in the output field.
-	 * @param theMessage message to be printed
-	 */
+	// This prints out the message to the console. 
 	public void printMessage(String theMessage) 
 	{
 		
 		System.out.print(theMessage + " \n");
 	}
 	
-	
+	//This tells us when the mouse moved and gives us the coordinates
 	public void mouseMoved(MouseEvent e)
 	{
 		printMessage("X coord: " + e.getX() + " Y coord: " + e.getY());
 	}
 	
-	/**
-	 * Handles the mouse entered event by printing a message.
-	 * @param me the mouse event containing location and modifier keys
-	 */
+	
+	//Handles the mouse entered event by printing a message.
 	public void mouseEntered(MouseEvent e) 
 	{
 		printMessage("Mouse entered");
 	}
 
-	/**
-	 * Handles the mouse exited event by printing a message.
-	 * @param me the mouse event containing location and modifier keys
-	 */
+	 //Handles the mouse exited event by printing a message.
 	 public void mouseExited(MouseEvent e) 
 	 {
 		 printMessage("Mouse exited");
 	 }
 
 	 
-	/**
-	 * Handles the mouse click event by printing the number of clicks.
-	 * @param me the mouse event containing location and modifier keys
-	 */
+
+	//Handles the mouse click event by printing the number of clicks.
 	public void mouseClicked(MouseEvent me) 
 	{
 		printMessage("Mouse clicked (# of clicks: " + me.getClickCount() + ")");	
 	}
 	
 	
-	/**
-	 * Handles the mouse down event by printing a message..
-	 * @param me the mouse event containing location and modifier keys
-	 */
+
+	//Handles the mouse down event by printing a message..
 	public void mousePressed(MouseEvent me) 
 	{
 		printMessage("MouseDown")	;
 	}
 	
 	
-	/**
-	 * Handles the mouse up event by printing a message.
-     * @param me the mouse event containing location and modifier keys
-     */
+
+	//Handles the mouse up event by printing a message.
 	public void mouseReleased(MouseEvent me) 
 	{
 		printMessage("MouseUp");	
 	}
 	
 	
-	/**
-	 * Perform actions depending which widget was selected.
-	 * Determines which sort of widget was selected and bases action on its name.
-	 * Currently has actions for the find word button and the open puzzle menu.
-	 * @param se the selection event including the source of the event
-	 */
+
+	//This function will tell us what menu button way pressed 
 	public void actionPerformed(ActionEvent se) 
 	{
 		String command = se.getActionCommand();
@@ -141,6 +121,7 @@ public class GraphicUI extends JPanel implements MouseListener, ActionListener, 
 	}
 
 	@Override
+	//This method will be used to detect mouseDragged Events
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		

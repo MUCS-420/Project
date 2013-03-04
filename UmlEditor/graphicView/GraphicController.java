@@ -17,10 +17,7 @@ public class GraphicController
 	private JFrame theFrame;
 	private static Dimension frameSize = new Dimension(500,500);
 	
-	/**
-	 * Constructs the object, creating the model and view (with the
-	 * frame and user interface)
-	 */
+	//This is the constructor for the graphic controller. 
     private GraphicController() 
     {
    	    //Set the look and feel (for Macs too).
@@ -41,18 +38,13 @@ public class GraphicController
     }
 
     
-    /**
-     * Returns the graphical user interface
-     * @return the graphcial user interface
-     */
-    public GraphicUI graphicalInterface ( ) {
+    //This returns the graphic user interface
+    public GraphicUI graphicalInterface ( ) 
+    {
     	return ui;
     }
     
-    /**
-     * creates (if necessary) and returns the singleton instance
-     * @return the singleton shared instance
-     */
+    //This creates a shared controller instance and then returns it 
     public static GraphicController sharedInstance() {
     	if (sharedApp == null) {
             sharedApp = new GraphicController();
@@ -60,10 +52,7 @@ public class GraphicController
     	return sharedApp;
     }
     
-	/**
-     * Creates the runnable job that runs the graphical interface
-     * @param args are not used
-     */
+	//This is what runs the program
 	public static void main(String[] args) {
          javax.swing.SwingUtilities.invokeLater(
         	new Runnable() {
