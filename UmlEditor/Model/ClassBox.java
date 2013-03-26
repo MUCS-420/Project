@@ -17,10 +17,10 @@ import javax.swing.JPanel;
 public class ClassBox implements MouseListener, ActionListener, MouseMotionListener
 {
 	private String classTitle; 
-	private JPanel theBox; 
-	
+	private JPanel theBox;
+	private boolean added; 
 	//This is the constructor for the classBox. 
-	public ClassBox(String name) 
+	public ClassBox() 
 	{
 		theBox = new JPanel();
 		
@@ -28,11 +28,12 @@ public class ClassBox implements MouseListener, ActionListener, MouseMotionListe
 		theBox.setPreferredSize(new Dimension(100,100));
 		theBox.setBackground(Color.LIGHT_GRAY);
 		theBox.setVisible(true);
-		 
+	
+		added = false; 
 		
 		theBox.addMouseListener(this);
 	   	theBox.addMouseMotionListener(this); 
-		classTitle = name; 
+		//classTitle = name; 
 	}
 
 	//This returns the main JPanel

@@ -1,6 +1,10 @@
 package graphicView;  
 
+import Controller.*;
+import Model.*;
 import java.awt.event.*;
+import java.util.Vector;
+
 import javax.swing.*;
 
 
@@ -29,12 +33,16 @@ public class GraphicUI extends JPanel implements MouseListener, ActionListener, 
 	public GraphicUI(GraphicController aController, JFrame aFrame) 
 	{
 		frame = aFrame;
-		controller = aController;
+		//controller = aController;
 		layoutPanel = new LayoutPanel(frame); 
 		createMenu(frame);
 	}
 
-
+	public void updateBoxes(Vector<ClassBox> classBoxes)
+	{
+		
+	}
+	
 	// This Creates all parts of the menu for the application.
 	private void createMenu(JFrame frame) 
 	{
@@ -115,8 +123,7 @@ public class GraphicUI extends JPanel implements MouseListener, ActionListener, 
 		String command = se.getActionCommand();
 		if(command == newClassBoxItem)
 		{	
-			layoutPanel.createClassBox();  
-			
+			layoutPanel.createClassBox(); 
 		}
 	}
 
